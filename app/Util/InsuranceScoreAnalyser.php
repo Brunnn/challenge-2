@@ -79,6 +79,8 @@ class InsuranceScoreAnalyser
                     return $plan;
                 }
             }
+            return $thresholds[array_key_last($thresholds)];
+
         })->toArray();
     }
 }

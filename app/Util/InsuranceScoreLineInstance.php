@@ -6,7 +6,7 @@ class InsuranceScoreLineInstance
 {
     protected string $name;
     protected int $score;
-    protected $ineligible = false;
+    protected bool $ineligible = false;
 
     public function __construct(string $line, int $score)
     {

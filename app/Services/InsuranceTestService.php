@@ -28,6 +28,14 @@ class InsuranceTestService implements IInsuranceTestService
             'life' => [0 => InsurancePlanEnum::ECONOMIC, 1 => InsurancePlanEnum::STANDARD, 3 => InsurancePlanEnum::ADVANCED],
         ]);
 
+
+        //Se por algum motivo quisessemos rodar o analysador em milhares de perfis, 
+        //poderiamos criar um novo método no analyser para "resetar os scores e eligiblidade" da instancia
+        //Isso pouparia o uso de memoria para instanciar outro objeto.
+        
+
+        //Aplicar as regras através de um callable permite que futuramente estas sejam dinamicas e definidas em tempo de execução
+
         //Se o usuário não tem renda, veiculo ou casa, ele é inelegivel para invalidez, seguros auto e residencial, respectivamente.
         $analyser->applyRule(function (Collection $insuranceLines) use ($income, $vehicle, $houseOwnership) {
             if ($income <= 0) {
